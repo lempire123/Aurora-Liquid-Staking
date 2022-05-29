@@ -79,11 +79,16 @@ contract AuroraLiquidStaking is ERC20 {
     // @notice Allows user to stake their aurora 
     // @dev User receives an ERC20 token receipt (stAurora)
     // @param _amount Amount of aurora to stake
-    function deposit(uint256 _amount) public {
+     function deposit(uint256 _amount) public {
         aurora.transferFrom(msg.sender, address(this), _amount);
         uint256 totalAurora = staking.getUserTotalDeposit(address(this));
-        uint256 mintAmount = _amount / totalAurora * totalSupply();
-        _mint(msg.sender, mintAmount);
+        if (totalSupply() == 0 || totalAurora == 0) {
+            _mint(msg.sender, _amount);
+        } else {
+            uint256 mintAmount = _amount / totalAurora * totalSupply();
+            _mint(msg.sender, mintAmount);
+        }
+       
     }
 
     // @notice Helper function to stake all of user's aurora balance
