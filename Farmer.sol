@@ -50,7 +50,7 @@ contract Farmer {
 
     // Admin of the contract
     address public admin;
-    // Address of main liquid taking contract
+    // Address of main liquid staking contract
     address public main;
     // Reward tokens
     IERC20 public constant BSTN = IERC20(0x9f1F933C660a1DC856F0E0Fe058435879c5CCEf0);
