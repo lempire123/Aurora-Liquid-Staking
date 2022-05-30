@@ -14,7 +14,7 @@ interface AuroraStaking {
     function withdraw(uint256 streamId) external;
     function moveAllRewardsToPending() external;
     function withdrawAll() external;
-    function getUserTotalDeposit(address account) external;
+    function getUserTotalDeposit(address account) external view  returns (uint256);
 }
 
 /// @title Aurora Liquid Staking Contract
