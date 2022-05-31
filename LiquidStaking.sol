@@ -102,7 +102,7 @@ contract AuroraLiquidStaking is ERC20 {
     // =====================================
 
     // @notice Moves rewards to pending (become accessible after 2 days)
-    function moveRewardsToPending() external {
+    function moveRewardsToPending() external onlyAdmin {
         staking.moveAllRewardsToPending();
     }
 
@@ -115,7 +115,7 @@ contract AuroraLiquidStaking is ERC20 {
             uint256 tokenBalance = rewardStreamTokens[i].balanceOf(address(this));
             rewardStreamTokens[i].transfer(farmer, tokenBalance);
         }
-        farmer.putFundsToWork();
+        // farmer.putFundsToWork(); Would run out of gas
     }
 
     // ====================================
