@@ -105,7 +105,7 @@ contract Farmer {
     }
 
     // @notice Put funds to work
-    function putFundsToWork() external {
+    function putFundsToWork() external onlyAdmin {
         uint256 BSTNBal = BSTN.balanceOf(address(this));
         uint256 PLYBal = PLY.balanceOf(address(this));
         uint256 TriBal = TRI.balanceOf(address(this));
